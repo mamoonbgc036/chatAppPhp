@@ -1,0 +1,46 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	background: url('../images/bgImage.png') no-repeat;
+	background-size: cover;
+}
+
+			/*SIGNIN FORM*/
+
+#signin{
+	position: absolute;
+    width: 30%;
+    height: 250px;
+    top: 50%;
+    left: 50%;
+    background: #fff;
+    opacity: 0.5;
+    padding: 10px;
+    transform: translate(-50%,-50%);
+    box-shadow: 1px 32px 59px;
+}
+
+
+#signin input, #signin button{
+	display: block;
+	margin: 10px auto;
+}
+
+#signin button{
+	border: 1px solid #000;
+	padding: 3px 10px;
+}
+
+#signin input{
+	width: 90%;
+	border: 2px solid #FD3A74;
+}
+
+.fa-user-tie{
+	font-size: 40px;
+}
+
+
