@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<link rel="stylesheet" type="text/css" href="css/all.min.css">
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-	<title></title>
-</head>
-<body>
+<?php
+include_once('inc/header.php');
+?>
 <div id="signin">
 	<div class="text-center">
 		<i class='fas fa-user-tie'></i>
@@ -17,10 +11,8 @@
 		<input type="password" name="password" placeholder="Password">
 		<button>Signin</button>
 	</form>
-	<p class="text-center">Don't have an account! <a href="">Register</a></p>
+	<p class="text-center">Don't have an account! <a href="register.php">Register</a></p>
 </div>
-<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="js/app.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-</body>
-</html>
+<?php
+include_once('inc/footer.php');
+?>
