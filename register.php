@@ -2,8 +2,15 @@
 include_once('inc/header.php');
 ?>
 <div id="register">
-	<form action="" method="post">
+	<form action="insert.php" method="post">
 		<h4 class="text-center">Register</h4>
+		<?php
+			if (isset($_GET['isNotmatched'])) {
+				?>
+				<p class="text-center bg-warning">Password and Repassword does not matched!</p>
+				<?php
+			}
+		?>
 		<div>
 			<label>Name:</label>
 			<input type="text" name="name" placeholder="Enter Name" required="">
@@ -14,22 +21,22 @@ include_once('inc/header.php');
 		</div>
 		<div>
 			<label>Email</label>
-			<input type="text" name="phone" placeholder="Enter Email" required="">
+			<input type="text" name="email" placeholder="Enter Email" required="">
 		</div>
 		<div>
 			<label>Username</label>
-			<input type="text" name="phone" placeholder="Enter Username" required="">
+			<input type="text" name="username" placeholder="Enter Username" required="">
 		</div>
 		<div>
 			<label>Password</label>
-			<input type="text" name="phone" placeholder="Enter Password" required="">
+			<input type="text" name="password" placeholder="Enter Password" required="">
 		</div>
 		<div>
 			<label>Repassword</label>
-			<input type="text" name="phone" placeholder="Enter Repassword" required="">
+			<input type="text" name="repassword" placeholder="Enter Repassword" required="">
 		</div>
 		<div>
-			<button>Register</button>
+			<button name="submit">Register</button>
 		</div>
 		<label>Have account!<a href="index.php">Login</a></label>
 	</form>
