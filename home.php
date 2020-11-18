@@ -3,68 +3,134 @@
 ?>
 <style type="text/css">
 	#canvas{
-		display: flex;
-		width: 90%;
-		justify-content: center;
-		margin-top: 20px;
-		color: #fff;
-	}
-
-	#userCanvas{
-		width: 30%;
-	}
-
-	#chatBox{
-		width: 60%;
-	}
-
-	#username {
-		display: flex;
-		place-items : center;
-	}
-
-	#username p{
-		margin-bottom: 0!important;
-	}
-
-	#userCanvas ul li{
-		margin: 10px auto;
-	}
-
-	#sender{
-		display: flex;
-		place-items :center;
-	}
-
-	#msgBox div{
-		margin: 10px auto;
-	}
-
-	#me{
-		display: flex;
-		place-items :center;
-		float: right;
+		    width: 90%;
+		    min-height: 90vh;
+		    display: flex;
+		    background: #000306;
+		    margin: auto;
+		    position: absolute;
+		    top: 50%;
+		    left: 50%;
+		    transform: translate(-50%, -50%);
 	}
 
 	#canvas li{
 		list-style: none;
 	}
 
-	#msgBox p{
-		margin-bottom: 0!important;
+	#canvas #username{
+		display: flex;
+		place-items:center;
+		border: 1px solid #fff;
+		padding: 10px;
+		background: #0F90F2;
 	}
 
-	#userMsg input{
-		margin-bottom: 0px;
+	#sender p{
+		position: relative;
+		background:#cbe8f0;
+		width:70%;
+		margin-left:30px;
+		border-radius:2px;
 	}
 
-	#canvas a{
+		#me p{
+			position: relative;
+			background:#FD3A74;
+			width:70%;
+			margin-right:30px;
+			border-radius:2px;
+		}
+
+
+	#sender p:after{
+		 content:'';
+  position:absolute;
+  border:10px solid transparent;
+  border-top:10px solid #cbe8f0;
+  top:0px;
+  left:-10px;
+	}
+
+	#me p:after{
+		 content:'';
+  position:absolute;
+  border:10px solid transparent;
+  border-top:10px solid #FD3A74;
+  top:0px;
+  right:-10px;
+	}
+
+	#me div{
+		display: flex;
+		justify-content: flex-end;
+	}
+
+	#username #logout{
+		margin-left: auto;
+	}
+
+	#user{
+		padding: 5px;
+	}
+
+
+	#user li{
+		margin: 5px auto;
+	}
+
+	#user a{
 		color: #fff;
+	}
+
+
+	#userCanvas {
+		width: 30%;
+		border: 2px solid #fff;
+	}
+
+	#userCanvas button{
+		margin: 0 auto;
+		display: block;
+	}
+
+	#button{
+		border-bottom: 1px solid #fff;
+		padding: 17px;
+		background: #0F90F2;
+	}
+
+	#chatBox{
+		width: 70%;
+		border: 2px solid #fff;
+	}
+
+	#chatBox #msgBox{
+		padding: 5px;
 	}
 
 	#canvas img{
 		width: 30px;
 		border-radius: 50%;
+	}
+
+	#msgBox:hover{
+		overflow-y: scroll;
+	}
+
+	#msgArea{
+		position: absolute;
+	    width: 68%;
+	    bottom: 0;
+	}
+
+	#sender{
+		display: flex;
+	}
+
+	#logout{
+		background: #FD3A74;
+    	padding: 6px;
 	}
 </style>
 <div id="canvas">
@@ -74,29 +140,37 @@
 		</div>
 		<div id="user">
 			<ul>
-				<li><a href="">mamoon <span><i class="fa fa-circle"></i></span></a></li>
-				<li><a href="">mamoon <span><i class="fa fa-circle-notch" aria-hidden="true"></i></span></a></li>
+				<li><a href="">mamoon <span><i class="fa fa-window-close"></i></span></a></li>
+				<li><a href="">mamoon <span><i class="fa fa-check" aria-hidden="true"></i></span></a></li>
 			</ul>
 		</div>
 	</div>
 	<div id="chatBox">
 		<div id="username">
-			<img src="images/mamon.jpg">
-			<p>mamoon</p>
-			<a href="" class="bg-info m-1">Logout</a>
+			<div>
+				<img src="images/mamon.jpg">
+				<span class="text-light">mamoon</span>
+			</div>
+			<div id="logout">
+				<a href="" class="text-light">Logout</a>
+			</div>
 		</div>
 		<div id="msgBox">
-			<div id="sender">
-				<img src="images/mamon.jpg">
-				<p>Hello..</p>
+			<div id="msgArea">
+				<div id="sender">
+					<img src="images/mamon.jpg">
+					<p>Hello..</p>
+				</div>
+				<div id="me">
+					<div>
+						<p>Hi...</p>
+						<img src="images/mamon.jpg">
+					</div>
+				</div>
+				<div id="userMsg">
+					<input type="text" class="form-control" placeholder="Enter your message here" name="">
+				</div>
 			</div>
-			<div id="me">
-				<p>Hi...</p>
-				<img src="images/mamon.jpg">
-			</div>
-		</div>
-		<div id="userMsg">
-			<input type="text" class="form-control" name="">
 		</div>
 	</div>
 </div>
