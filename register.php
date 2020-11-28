@@ -2,7 +2,7 @@
 include_once('inc/header.php');
 ?>
 <div id="register">
-	<form action="insert.php" method="post">
+	<form action="insert.php" method="post" enctype="multipart/form-data">
 		<h4 class="text-center">Register</h4>
 		<?php
 			if (isset($_GET['isNotmatched'])) {
@@ -26,6 +26,10 @@ include_once('inc/header.php');
 		<div>
 			<label>Username</label>
 			<input type="text" name="username" placeholder="Enter Username" required="">
+		</div>
+		<div>
+			<label>Image</label>
+			<input type="file" name="image" required="">
 		</div>
 		<div>
 			<label>Password</label>

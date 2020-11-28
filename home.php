@@ -24,6 +24,7 @@
 		border: 1px solid #fff;
 		padding: 10px;
 		background: #0F90F2;
+		height: 63px;
 	}
 
 	#sender p{
@@ -45,20 +46,20 @@
 
 	#sender p:after{
 		 content:'';
-  position:absolute;
-  border:10px solid transparent;
-  border-top:10px solid #cbe8f0;
-  top:0px;
-  left:-10px;
+ 		 position:absolute;
+		 border:10px solid transparent;
+		  border-top:10px solid #cbe8f0;
+		  top:0px;	
+		  left:-10px;
 	}
 
 	#me p:after{
 		 content:'';
-  position:absolute;
-  border:10px solid transparent;
-  border-top:10px solid #FD3A74;
-  top:0px;
-  right:-10px;
+  		position:absolute;
+ 		 border:10px solid transparent;
+  		border-top:10px solid #FD3A74;
+  		top:0px;
+  		right:-10px;
 	}
 
 	#me div{
@@ -132,6 +133,25 @@
 		background: #FD3A74;
     	padding: 6px;
 	}
+
+	#userMsg{
+		display: flex;
+		margin-top: 10px;
+	}
+
+	#userMsg button{
+		border-radius: 50%;
+    width: 50px;
+    background: #0F90F2;
+	}
+
+	#me #typed{
+		margin-right: 50px;
+	}
+
+	.fa-paper-plane{
+		color: red;
+	}
 </style>
 <div id="canvas">
 	<div id="userCanvas">
@@ -148,8 +168,8 @@
 	<div id="chatBox">
 		<div id="username">
 			<div>
-				<img src="images/mamon.jpg">
-				<span class="text-light">mamoon</span>
+				<!-- <img src="images/mamon.jpg">
+				<span class="text-light">mamoon</span> -->
 			</div>
 			<div id="logout">
 				<a href="" class="text-light">Logout</a>
@@ -158,22 +178,30 @@
 		<div id="msgBox">
 			<div id="msgArea">
 				<div id="sender">
-					<img src="images/mamon.jpg">
-					<p>Hello..</p>
+					<!-- SENDER MESSAGE GO HERE -->
 				</div>
 				<div id="me">
-					<div>
-						<p>Hi...</p>
-						<img src="images/mamon.jpg">
-					</div>
+					<!-- MY MESSAGE GO HERE -->
 				</div>
 				<div id="userMsg">
-					<input type="text" class="form-control" placeholder="Enter your message here" name="">
+					<input type="text" id="input" class="form-control" placeholder="Enter your message here" name=""><button id="btn"><i class="fas fa-paper-plane"></i></button>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#input').keypress(function(){
+			if(event.keyCode==13){
+				$('#me').append(`<div>
+						<p>`+$(this).val()+`</p>
+						<img src="images/mamon.jpg">
+					</div>`);
+			}
+		})
+	})
+</script>
 <?php
 	include_once('inc/footer.php');
 ?>
