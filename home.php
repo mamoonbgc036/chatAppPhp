@@ -84,6 +84,11 @@
 		color: #fff;
 	}
 
+	#user img{
+		width: 30px;
+		border-radius: 50%;
+	}
+
 
 	#userCanvas {
 		width: 30%;
@@ -153,6 +158,11 @@
 		color: red;
 	}
 </style>
+<?php
+include_once('autoload.php');
+$dbInstance = DB::getInstance();
+$results = $dbInstance->runQuery('user',null)->result();
+?>
 <div id="canvas">
 	<div id="userCanvas">
 		<div id="button">
@@ -160,8 +170,13 @@
 		</div>
 		<div id="user">
 			<ul>
-				<li><a href="">mamoon <span><i class="fa fa-window-close"></i></span></a></li>
-				<li><a href="">mamoon <span><i class="fa fa-check" aria-hidden="true"></i></span></a></li>
+				<?php
+					foreach ($results as $result) {
+						?>
+						<li><img src="images/<?=$result[4]?>"><a href=""><?=$result['name']?><span><i class="fa fa-window-close"></i></span></a></li>
+						<?php
+					}
+				?>
 			</ul>
 		</div>
 	</div>

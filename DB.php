@@ -77,7 +77,7 @@
 
 class DB{
 	private static $_instance;
-	private $_db, $_query;
+	private $_db, $_query, $_result;
 	private function __construct(){
 		try{
 			$this->_db = new PDO("mysql:host=localhost;dbname=chatappPhp","root","");
@@ -142,8 +142,21 @@ class DB{
 		}
 	}
 
-	public function runQuery(){
+	public function runQuery($table,$parameter){
+		if ($parameter == null) {
+			$sql = "SELECT * FROM $table";
+			$this->_query = $this->_db->prepare($sql);
+			if ($this->_query->execute()) {
+				$this->_result = $this->_query->fetchAll();
+				return $this;
+			}else{
+				return "There is no table of your query";
+			}
+		}
+	}
 
+	public function result(){
+		return $this->_result;
 	}
 }
 ?>
