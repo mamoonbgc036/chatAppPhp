@@ -1,4 +1,6 @@
 <?php
+
+print_r($_POST);die();
 if (isset($_REQUEST['submit'])) {
 	//print_r($_FILES);die();
 	if ($_REQUEST['password']!=$_POST['repassword']) {

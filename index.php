@@ -2,10 +2,12 @@
 include_once('inc/header.php');
 $unset = false;
 if (isset($_POST['submit']) && !empty($_POST)) {
+	session_start();
 	array_pop($_POST);
 	include_once('autoload.php');
 	$db = DB::getInstance();
 	$feedback = $db->makeQuery('user',$_POST);
+	$_SESSION['id'] = $feedback;
 	if ($feedback) {
 		header('Location:home.php');
 	} else{

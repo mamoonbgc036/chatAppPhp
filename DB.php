@@ -103,6 +103,12 @@ class DB{
 		$this->_query->execute();	
 	}
 
+	public function msgInsert($bundal){
+		$sql = "INSERT INTO msg (`senderName`,`receiverName`,`msgContent`,`status`) VALUES ($bundal[1],$bundal[2],'$bundal[0]','unread')";
+		$this->_query = $this->_db->prepare($sql);
+		$this->_query->execute();
+	}
+
 	public function makeQuery($table,$value){
 		if ($value['password']) {
 			$value['password'] = md5($value['password']);
@@ -114,7 +120,7 @@ class DB{
 			$this->_query->execute();
 			$result = $this->_query->fetchColumn();
 			if ($result>1) {
-				return true;
+				return $result;
 			}else{
 				return false;
 			}
@@ -135,7 +141,9 @@ class DB{
 
 			$sql = "INSERT INTO `$table` ({$keys}) VALUES ({$keyVal})";
 			if($this->_insert($sql,$vals)){
-				header('Location:home.php');
+				if ($table=='user') {
+					header('Location:home.php');
+				}
 			}else{
 				return "There is somethink wrong";
 			}
