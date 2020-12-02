@@ -160,6 +160,13 @@ class DB{
 			}else{
 				return "There is no table of your query";
 			}
+		} else{
+			$sql = "SELECT * FROM `$table` WHERE senderName = $parameter[0] and receiverName = $parameter[1] or senderName = $parameter[1] and receiverName = $parameter[0]";
+			$this->_query = $this->_db->prepare($sql);
+			if ($this->_query->execute()) {
+				$this->_result = $this->_query->fetchAll();
+				return $this;
+			}
 		}
 	}
 
@@ -167,4 +174,3 @@ class DB{
 		return $this->_result;
 	}
 }
-?>

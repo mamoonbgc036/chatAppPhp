@@ -1,6 +1,5 @@
 <?php
-
-print_r($_POST);die();
+session_start();
 if (isset($_REQUEST['submit'])) {
 	//print_r($_FILES);die();
 	if ($_REQUEST['password']!=$_POST['repassword']) {
@@ -39,5 +38,14 @@ if (isset($_REQUEST['submit'])) {
 		$_SESSION['email'] = $_REQUEST['email'];
 		header('Location: home.php');
 	}
-}
+} elseif(!empty($_POST['infom'])){
+		include_once('autoload.php');
+		$dbInstance = DB::getInstance();
+		$data = $dbInstance->runQuery('msg',$_POST['infom'])->result();
+		echo json_encode($data);die();
+		//echo json_encode($data);die();
+} elseif (isset($_SESSION['id'])) {
+	session_unset();
+	header('Location:index.php');
+} 
 ?>

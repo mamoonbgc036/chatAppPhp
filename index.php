@@ -7,9 +7,9 @@ if (isset($_POST['submit']) && !empty($_POST)) {
 	include_once('autoload.php');
 	$db = DB::getInstance();
 	$feedback = $db->makeQuery('user',$_POST);
-	$_SESSION['id'] = $feedback;
 	if ($feedback) {
-		header('Location:home.php');
+		$_SESSION['id'] = $feedback;
+		 header('Location:home.php?id='.$feedback);
 	} else{
 		$unset = true;
 	}
